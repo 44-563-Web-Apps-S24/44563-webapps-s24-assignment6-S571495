@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Animal Guessing Game</title>
+</head>
+<body>
+
+<h2>Animal Guessing Game</h2>
+
+<form>
+    <label for="hiddenAnimal">The hidden animal type:</label>
+    <input type="password" id="hiddenAnimal" value="Chicken"> <br>
+
+    <label for="guessAnimal">Guess the animal:</label>
+    <input type="text" id="guessAnimal"> <br>
+
+    <input type="button" onclick="checkAnimal()" value="Check the guess">
+</form>
+
+<p id="result">Correct: 0, Wrong: 0</p>
+
+<script>
+    let wrong = 0;
+    let correct = 0;
+
+    function checkAnimal() {
+        const hiddenAnimal = document.getElementById("hiddenAnimal").value.toLowerCase();
+        const guessedAnimal = document.getElementById("guessAnimal").value.toLowerCase();
+
+        if (hiddenAnimal === guessedAnimal) {
+            correct++;
+            alert("Ruff ruff");
+        } else {
+            wrong++;
+            alert("Grrrr");
+        }
+
+        document.getElementById("result").innerHTML = `Correct: ${correct}, Wrong: ${wrong}`;
+    }
+</script>
+
+</body>
+</html>
