@@ -7,7 +7,7 @@
 
 <h2>Yashaswini Sarabu discount calculations</h2>
 
-<form>
+
     <label for="price">Enter price per</label>
     <input type ="number" id="price" name="form1_price" value=10> <br>
 
@@ -18,40 +18,43 @@
     <input type ="number" id="discount" name="form1_discount" value=5> <br>
 
     <button onclick="discount()">Show total</button>
-</form>
+    <div id="results"></div>
 
 
-<div id="result"></div>
+
 
 <script> 
 
-let myOutput = ""
 function discount(){
-    console.log("Getting form values")
+  //  console.log("Getting form values")
     let price = document.getElementById("price").value
+   // console.log(price)
     let items = document.getElementById("count").value
+  //  console.log(items)
     let discount = document.getElementById("discount").value
-    var toShow = "Totals are: ";
+  //  console.log(discount)
+    let resultsElement = document.getElementById("results");
+    var toShow = "";
         for (var i = 0; i < 5; i++) {
-            let currentDiscount = parseInt(discountPercentage) + i;
-            let discountedPrice = price - (price * currentDiscount / 100);
+            let currentDiscount = parseInt(discount) + i;
+            let discountedPrice = price - (price * currentDiscount / 100); // Use currentDiscount here
             let totalCost = discountedPrice * items;
-            toShow += currentDiscount + "% is " + totalCost.toFixed(1) + "; ";
-    }
+            toShow += currentDiscount + "% is " + totalCost.toFixed(1) + "; "; // Use currentDiscount here
+        }
 
-        document.getElementById("result").innerHTML = toShow;
+        resultsElement.innerHTML = "Totals are: "+toShow;
 }
 
 </script>
 <form>
     <input type="radio" id="sum" name="operation" value="sum" onclick="chooseOp()">
-    <label for="sum">Sum</label>
+    <label for="sum">Sum</label><br>
     
     <input type="radio" id="multiply" name="operation" value="multiply" onclick="chooseOp()">
-    <label for="multiply">Multiply</label>
+    <label for="multiply">Multiply</label><br>
     
     <input type="radio"  id="exponent" name="operation" value="exponent" onclick="chooseOp()" >
-    <label for="exponent">Exponent</label>
+    <label for="exponent">Exponent</label><br>
    
 </form>
 
