@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>Animal Guessing Game</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -16,8 +18,10 @@
 
     <input type="button" onclick="checkAnimal()" value="Check the guess">
 </form>
+<p id="result" class="alert alert-primary">No of correct guesses: 0 </p>
+<p id="result1" class="alert alert-danger">No of wrong guesses: 0</p>
 
-<p id="result">Correct: 0, Wrong: 0</p>
+
 
 <div id="imageContainer">
     <img id="drinkImage" src="d1.jpg" alt="Drink" width="150" height="150" onclick="selectImage()">
@@ -26,20 +30,32 @@
 <script>
     let wrong = 0;
     let correct = 0;
+    let oops = 0;
 
     function checkAnimal() {
         const hiddenAnimal = document.getElementById("hiddenAnimal").value.toLowerCase();
         const guessedAnimal = document.getElementById("guessAnimal").value.toLowerCase();
+        if(oops >= 7){
+          document.getElementById("button_check").onclick = ranOutOfGuess();
+        }
 
         if (hiddenAnimal === guessedAnimal) {
             correct++;
             alert("Ruff ruff");
+           
         } else {
             wrong++;
             alert("Grrrr");
+            oops++;
         }
 
-        document.getElementById("result").innerHTML = `Correct: ${correct}, Wrong: ${wrong}`;
+        document.getElementById("result").innerHTML = `No of correct guesses: ${correct}`;
+        document.getElementById("result1").innerHTML = `No of wrong guesses: ${wrong}`;
+
+        
+    }
+    function ranOutOfGuess(){
+        alert("Sorry, ran out of guesses.");
     }
 
     var useImage = 1;
